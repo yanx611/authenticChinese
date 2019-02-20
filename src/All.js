@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home';
 import FooterInfo from './FooterInfo';
 import MenuEntry from './MenuEntry';
+import VideoList from './VideoList';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 
 const { Header, Content, Footer } = Layout;
 
-class App extends Component {
+class All extends Component {
 	render() {
 		return (
 			<div className="App">
@@ -17,7 +17,7 @@ class App extends Component {
 					<MenuEntry />
 				</Header>
 				<Content>
-					<Home />
+					<VideoList />
 				</Content>
 				<Footer>
 					<FooterInfo />
@@ -28,4 +28,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default All;

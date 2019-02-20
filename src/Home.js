@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pic from './pic.jpg';
+import pic from './pic.png';
 import {Menu, Row, Col, List, Card } from 'antd';
 import 'antd/dist/antd.css';
 
