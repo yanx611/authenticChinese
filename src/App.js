@@ -10,9 +10,9 @@ import 'antd/dist/antd.css';
 const { Header, Content, Footer } = Layout;
 
 class App extends Component {
-	componentDidMount() {
+	// componentDidMount() {
 		// const datRef = firebase.database().ref('clips');
-		const db = firebase.firestore();
+		// const db = firebase.firestore();
 		// db.collection("clips").where("chineseName", "==", "小爸爸")
 		// .get()
 		// .then(snap=>{
@@ -22,14 +22,14 @@ class App extends Component {
 		// });
 
 		// if without constriants
-		db.collection("clips")
-		.get()
-		.then(snap=>{
-			snap.forEach(doc=>{
-				console.log(doc.data());
-			})
-		});
-	}
+		// db.collection("clips")
+		// .get()
+		// .then(snap=>{
+		// 	snap.forEach(doc=>{
+		// 		console.log(doc.data());
+		// 	})
+		// });
+	// }
 	render() {
 		return (
 			<div className="App">
