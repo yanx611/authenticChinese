@@ -3,14 +3,16 @@ import firebase from './Firebase';
 import pic from './pic.png';
 import {Menu, Row, Col, List, Card } from 'antd';
 import 'antd/dist/antd.css';
+import TopicList from './TopicList';
 // import MenuItem from 'antd/lib/menu/MenuItem';
 
 class Home extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            levels: [],
-			topics: ['Me', 'Family','Food', 'Time', 'Travel&Navigation', 'Daily Lives', 'Academics'],
+            indices: {},
+            // topics: ['Me', 'Family','Food', 'Time', 'Travel&Navigation', 'Daily Lives', 'Academics'],
+            levels: []
 		}
     }
 	componentDidMount() {
@@ -36,16 +38,15 @@ class Home extends Component {
         db.collection("levels")
         .get()
         .then(snapshot => {
-            const arr = [];
+            const ind = {};
             snapshot.forEach(doc=>{
-                arr.push(doc.data().levelNum);
-                // console.log(doc.data().levelNum);
+                ind[doc.data().levelNum] = doc.data().topics
             })
-            // console.log(arr);
+            console.log(ind);
             this.setState({
-                levels: arr.sort(),
+                indices: ind,
             });
-            console.log(this.state.levels);
+            console.log(this.indices);
         })
 
         
@@ -70,11 +71,12 @@ class Home extends Component {
                 </Menu>
             </Row>
             <Row>
-                <List grid={{gutter: 16, column: 4}} dataSource = {topics} renderItem={item=>(
+                {/* <List grid={{gutter: 16, column: 4}} dataSource = {topics} renderItem={item=>(
                     <List.Item>
                         <Card title={item}> Translation</Card>
                     </List.Item>
-                )} />
+                )} /> */}
+                <TopicList /> 
             </Row>
         </div>
         )
