@@ -7,16 +7,10 @@ const textStyle = {
   
 
 class VideoList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            keyword: "KeyWord Example"
-        }
-    }
     render() {
         return(
             <div>
-                <div style={textStyle}>Results for {this.state.keyword} </div>
+                <div style={textStyle}>Results for {this.props.keyword}: </div>
                 <div style={textStyle}>
                     <VideoCard />
                 </div>
