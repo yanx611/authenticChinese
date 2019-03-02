@@ -4,19 +4,19 @@ import pic from './pic.png';
 import {Menu, Row, Col, List, Card } from 'antd';
 import 'antd/dist/antd.css';
 
+// Homepage component, render topics and textbooks 
+
 class Home extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            // indices: {},
-            // topics: ['Me', 'Family','Food', 'Time', 'Travel&Navigation', 'Daily Lives', 'Academics'],
             unit : [["Default"]],
-            // levels: ["A1", "A2"]
             level : ["Default"],
             showingMenu: 0
 		}
     }
 	componentDidMount() {
+        // fetch data from firebase store in local state 
 		const db = firebase.firestore();
         db.collection("levels")
         .get()
@@ -36,11 +36,18 @@ class Home extends Component {
     }
     
     handleMenuClick(e) {
+        // change views for tabs of submenu
         this.setState({
             showingMenu: e.key,
         });
     }
+
+    handleTopicClick(e) {
+        // direct to view page of that specific topic 
+    }
+
     render() {
+        // render data of submenu and their topics 
         const unit = this.state.unit;
         const level = this.state.level;
         return (
@@ -59,7 +66,7 @@ class Home extends Component {
             <Row>
                 <List grid={{gutter: 16, column: 4}} dataSource = {unit[this.state.showingMenu]} renderItem={item=>(
                     <List.Item>
-                        <Card title={item.english}> {item.chinese}</Card>
+                        <Card title={item.english} onClick = {this.handleTopicClick.bind(this)}> {item.chinese}</Card>
                     </List.Item>
                 )} />
             </Row>

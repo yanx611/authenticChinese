@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Row, Col, Divider } from 'antd';
 import 'antd/dist/antd.css';
 
+// component store footer information 
+
 class FooterInfo extends Component {
     render() {
         return(

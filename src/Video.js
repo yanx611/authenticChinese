@@ -8,7 +8,13 @@ import 'antd/dist/antd.css';
 
 const { Header, Content, Footer } = Layout;
 
-class All extends Component {
+class Video extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            link : "https://www.youtube.com/embed/R-s5WEWZIJw?start=2170&end=2190"
+        }
+    }
 	render() {
 		const myKey = "3";
 		return (
@@ -18,7 +24,8 @@ class All extends Component {
 					<MenuEntry mkey = {myKey}  />
 				</Header>
 				<Content>
-					<VideoList keyword = {"All"}/>
+					{/* shows the embeded  video */}
+                    <iframe title = "targetVideo" width="780" height="450" src="https://www.youtube.com/embed/R-s5WEWZIJw?start=2170&end=2190" frameborder="0"  allowfullscreen></iframe>
 				</Content>
 				<Footer>
 					<FooterInfo />
@@ -29,4 +36,4 @@ class All extends Component {
     }
 }
 
-export default All;
+export default Video; 

@@ -4,14 +4,18 @@ import './index.css';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import App from './App';
 import All from './All';
+import Video from './Video';
 import Notfound from './Notfound';
 import * as serviceWorker from './serviceWorker';
+
+// space for routing 
 
 const routing = (
     <Router>
         <Switch>
             <Route exact path = "/" component={App} />
-            <Route path = '/viewAll' component={All} />
+            <Route path = '/view/all' component={All} />
+            <Route path = '/test' component={Video} />
             <Route component={Notfound} />
         </Switch>
     </Router>
