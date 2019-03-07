@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import FooterInfo from './FooterInfo';
 import MenuEntry from './MenuEntry';
-import VideoList from './VideoList';
 import { Layout } from 'antd';
+import firebase from './Firebase';
 import 'antd/dist/antd.css';
 
 const { Header, Content, Footer } = Layout;
@@ -12,11 +12,25 @@ class Video extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            link : "https://www.youtube.com/embed/R-s5WEWZIJw?start=2170&end=2190"
+            info: []
         }
     }
+
+    componentDidMount() {
+        // fetch url data from database 
+		const db = firebase.firestore();
+		db.collection("clips/").doc(this.props.match.params.did)
+		.get()
+		.then(snapshot => {
+            this.setState({
+                info: snapshot.data(),
+            });
+		})
+    }
+
 	render() {
-		const myKey = "3";
+        const myKey = "1";
+        const info =  this.state.info;
 		return (
 			<div className="App">
 			<Layout>
@@ -25,7 +39,8 @@ class Video extends Component {
 				</Header>
 				<Content>
 					{/* shows the embeded  video */}
-                    <iframe title = "targetVideo" width="780" height="450" src="https://www.youtube.com/embed/R-s5WEWZIJw?start=2170&end=2190" frameborder="0"  allowfullscreen></iframe>
+                    <iframe title = "targetVideo" width="780" height="450" src= {info.embedUrl} ></iframe>
+                    <p><strong>{info.chineseName}</strong> {info.englishName} {info.episode}</p>
 				</Content>
 				<Footer>
 					<FooterInfo />
