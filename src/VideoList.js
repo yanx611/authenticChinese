@@ -16,7 +16,7 @@ class VideoList extends Component {
 		}
 	}
     componentDidMount() {
-		const db = firebase.firestore();
+        const db = firebase.firestore();
 		db.collection("clips")
 		.get()
 		.then(snapshot => {
@@ -27,12 +27,12 @@ class VideoList extends Component {
             this.setState({
                 clips: clipCollection,
             });
-            console.log(clipCollection);
+            // console.log(clipCollection);
 		})
     }
     render() {
         const clips = this.state.clips;
-        console.log(clips);
+        // console.log(clips);
         return(
             <div>
                 <div style={textStyle}>Results for {this.props.keyword}: </div>

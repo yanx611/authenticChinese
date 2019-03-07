@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import firebase from './Firebase';
 import pic from './pic.png';
 import {Menu, Row, Col, List, Card } from 'antd';
@@ -66,7 +67,9 @@ class Home extends Component {
             <Row>
                 <List grid={{gutter: 16, column: 4}} dataSource = {unit[this.state.showingMenu]} renderItem={item=>(
                     <List.Item>
-                        <Card title={item.english} onClick = {this.handleTopicClick.bind(this)}> {item.chinese}</Card>
+                        <Link to={'/view/'+item.english}>
+                            <Card title={item.english} onClick = {this.handleTopicClick.bind(this)}> {item.chinese}</Card>
+                        </Link>
                     </List.Item>
                 )} />
             </Row>

@@ -14,7 +14,7 @@ const routing = (
     <Router>
         <Switch>
             <Route exact path = "/" component={App} />
-            <Route path = '/view/all' component={All} />
+            <Route path = '/view/:keyword' component={All} />
             <Route path = "/vd/:did" component={Video} />
             <Route component={Notfound} />
         </Switch>

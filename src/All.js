@@ -18,9 +18,9 @@ class All extends Component {
 					<MenuEntry mkey = {myKey}  />
 				</Header>
 				<Content>
-					<VideoList keyword = {"All"}/>
+					<VideoList keyword = {this.props.match.params.keyword}/>
 				</Content>
-				<Footer>
+				<Footer style={{ width: '100%' }}>
 					<FooterInfo />
 				</Footer>
 			</Layout>

@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 class FooterInfo extends Component {
     render() {
         return(
-            <div>
+            <div style={{ background: "" }}>
                 <Row gutter={16}>
                     <Col className="gutter-row" span={6}>
                         <div className="gutter-box">
