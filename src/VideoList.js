@@ -17,18 +17,34 @@ class VideoList extends Component {
 	}
     componentDidMount() {
         const db = firebase.firestore();
-		db.collection("clips")
-		.get()
-		.then(snapshot => {
-			let clipCollection = [];
-            snapshot.forEach(doc=>{
-                clipCollection.push(doc.data());
+        if (this.props.keyword === "all") {
+            db.collection("clips")
+            .get()
+            .then(snapshot => {
+                let clipCollection = [];
+                snapshot.forEach(doc=>{
+                    clipCollection.push(doc.data());
+                })
+                this.setState({
+                    clips: clipCollection,
+                });
+                // console.log(clipCollection);
             })
-            this.setState({
-                clips: clipCollection,
-            });
-            // console.log(clipCollection);
-		})
+        } else {
+            // matching tags 
+            db.collection("clips")
+            .where('tags', 'array-contains', this.props.keyword.toLowerCase())
+            .get()
+            .then(snapshot => {
+                let clipCollection = [];
+                snapshot.forEach(doc=>{
+                    clipCollection.push(doc.data());
+                })
+                this.setState({
+                    clips: clipCollection,
+                });       
+            })
+        }
     }
     render() {
         const clips = this.state.clips;
@@ -43,7 +59,7 @@ class VideoList extends Component {
                         <List.Item>
                             <Link to = {'/vd/' + item.id} >
                                 <Card title={item.englishName} hoverable style={{width:300}} > 
-                                    <p>{item.episode}</p>
+                                    <p>{"(" + item.type + ") "+ item.episode}</p>
                                 </Card>
                             </Link>
                         </List.Item>
