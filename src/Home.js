@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import firebase from './Firebase';
-import pic from './pic.png';
+import pic from './pic.jpg';
 import {Menu, Row, Col, List, Card } from 'antd';
 import 'antd/dist/antd.css';
 
