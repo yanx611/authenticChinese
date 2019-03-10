@@ -30,7 +30,6 @@ class VideoList extends Component {
                 this.setState({
                     clips: clipCollection,
                 });
-                // console.log(clipCollection);
             })
         } else {
             // matching tags 

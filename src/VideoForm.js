@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button, Layout, Select } from "antd";
+import firebase from './Firebase';
 import "./App.css";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
@@ -9,29 +11,86 @@ const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
 class VideoForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state =  {
+            level: [],
+            unit: {},
+            topics: [],
+            redirect: false
+        }
+    }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        const db = firebase.firestore();
+        db.collection("clips").add(values)
+        .then(ref=>{
+            console.log("Added document with ID: ", ref.id);
+            db.collection("clips").doc(ref.id).set({
+                id: ref.id
+              }, {merge: true});
+        })
+        .then(
+            this.setState({
+                redirect : true
+            })
+        )
       }
     });
   };
 
+  levelOnchange(val) {
+      let choices = [];
+      for (let i = 0; i < val.length; ++i) {
+          choices = choices.concat(this.state.unit[val[i]]);
+      }
+      this.setState({
+          topics: choices
+      })
+  }
+
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("levels")
+    .get()
+    .then(snapshot => {
+        let levels = [];
+        let units = {};
+        snapshot.forEach(doc=>{
+            levels.push(doc.data().levelNum);
+            units[doc.data().levelNum] = doc.data().topics;
+        })
+        this.setState({
+            level: levels,
+            unit: units
+        });
+    })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
-      labelCol: {
+      labelcol: {
         xs: { span: 24 },
         sm: { span: 8 }
       },
-      wrapperCol: {
+      wrappercol: {
         xs: { span: 24 },
         sm: { span: 16 }
       }
     };
 
+    
+
     const myKey = "4";
+    const level = this.state.level;
+    const redirect = this.state.redirect;
+    if (redirect === true) {
+        return <Redirect to="/" />
+    }
 
     return (
       <div className="App">
@@ -143,11 +202,11 @@ class VideoForm extends Component {
                     }
                     mode="multiple"
                     placeholder="Please select corresponding levels"
+                    onChange={this.levelOnchange.bind(this)}
                   >
-                    <Option value="1A">1A</Option>
-                    <Option value="1B">1B</Option>
-                    <Option value="2A">2A</Option>
-                    <Option value="2A">2B</Option>
+                    {level.map(
+                        (item) => <Option key={item} value={item}>{item}</Option>
+                    )}
                   </Select>
                 )}
               </Form.Item>
@@ -168,14 +227,9 @@ class VideoForm extends Component {
                     mode="multiple"
                     placeholder="Please select corresponding tags"
                   >
-                    <Option value="me">me</Option>
-                    <Option value="home">home</Option>
-                    <Option value="food">food</Option>
-                    <Option value="time">time</Option>
-                    <Option value="dailylives">Daily Lives</Option>
-                    <Option value="shopping">Shopping</Option>
-                    <Option value="travel&navigation">Travel&Navigation</Option>
-                    <Option value="academics">Academics</Option>
+                    {this.state.topics.map(
+                        (item) => <Option key = {item.english} value={item.english}>{item.english}</Option>
+                    )}
                   </Select>
                 )}
               </Form.Item>
