@@ -21,7 +21,7 @@ class App extends Component {
 				<Content>
 					<Home />
 				</Content>
-				<Footer>
+				<Footer >
 					<FooterInfo />
 				</Footer>
 			</Layout>

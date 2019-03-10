@@ -7,6 +7,7 @@ import All from './All';
 import Video from './Video';
 import Notfound from './Notfound';
 import * as serviceWorker from './serviceWorker';
+import VideoForm from './VideoForm';
 
 // space for routing 
 
@@ -16,6 +17,7 @@ const routing = (
             <Route exact path = "/" component={App} />
             <Route path = '/view/:keyword' component={All} />
             <Route path = "/vd/:did" component={Video} />
+            <Route path = "/createNew" component={VideoForm} />
             <Route component={Notfound} />
         </Switch>
     </Router>

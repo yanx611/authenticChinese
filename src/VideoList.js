@@ -23,7 +23,9 @@ class VideoList extends Component {
             .then(snapshot => {
                 let clipCollection = [];
                 snapshot.forEach(doc=>{
-                    clipCollection.push(doc.data());
+                    if (doc.data().englishName && doc.data().englishName !== "") {
+                        clipCollection.push(doc.data());
+                    }
                 })
                 this.setState({
                     clips: clipCollection,
@@ -38,7 +40,9 @@ class VideoList extends Component {
             .then(snapshot => {
                 let clipCollection = [];
                 snapshot.forEach(doc=>{
-                    clipCollection.push(doc.data());
+                    if (doc.data().englishName && doc.data().englishName !== "") {
+                        clipCollection.push(doc.data());
+                    }
                 })
                 this.setState({
                     clips: clipCollection,

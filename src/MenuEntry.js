@@ -13,6 +13,7 @@ class MenuEntry extends Component {
                 <Menu.Item key="1" disabled>Project X</Menu.Item>
                 <Menu.Item key="2"><Link to="/">Main</Link></Menu.Item>
                 <Menu.Item key="3"><Link to="/view/all">View All</Link></Menu.Item>
+                <Menu.Item key="4"><Link to="/createNew">Create</Link></Menu.Item>
             </Menu>
         )
     }
