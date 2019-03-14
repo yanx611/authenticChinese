@@ -34,7 +34,7 @@ class VideoList extends Component {
         } else {
             // matching tags 
             db.collection("clips")
-            .where('tags', 'array-contains', this.props.keyword.toLowerCase())
+            .where('tags', 'array-contains', this.props.keyword)
             .get()
             .then(snapshot => {
                 let clipCollection = [];

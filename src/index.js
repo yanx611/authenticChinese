@@ -5,6 +5,7 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import App from './App';
 import All from './All';
 import Video from './Video';
+import Login from './Login';
 import Notfound from './Notfound';
 import * as serviceWorker from './serviceWorker';
 import VideoForm from './VideoForm';
@@ -18,6 +19,7 @@ const routing = (
             <Route path = '/view/:keyword' component={All} />
             <Route path = "/vd/:did" component={Video} />
             <Route path = "/createNew" component={VideoForm} />
+            <Route path = "/login" component={Login} />
             <Route component={Notfound} />
         </Switch>
     </Router>

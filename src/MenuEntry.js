@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import {Menu} from 'antd';
+import {Menu, Form, Input} from 'antd';
 import 'antd/dist/antd.css';
+import SubMenu from 'antd/lib/menu/SubMenu';
 
 class MenuEntry extends Component {
 
@@ -14,6 +15,8 @@ class MenuEntry extends Component {
                 <Menu.Item key="2"><Link to="/">Main</Link></Menu.Item>
                 <Menu.Item key="3"><Link to="/view/all">View All</Link></Menu.Item>
                 <Menu.Item key="4"><Link to="/createNew">Create</Link></Menu.Item>
+                <Menu.Item key="5" style={{float: 'right'}}><Link to="/login">Login</Link></Menu.Item>
+
             </Menu>
         )
     }
