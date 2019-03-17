@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import firebase, { auth, provider } from "./Firebase";
+import { Redirect } from "react-router-dom";
+import firebase from "./Firebase";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
 import { Form, Icon, Input, Button, Layout, Divider } from "antd";
@@ -9,6 +10,12 @@ import "./Login.css";
 const { Header, Content, Footer } = Layout;
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+    }
+  }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -19,8 +26,11 @@ class Login extends Component {
           .auth()
           .signInWithEmailAndPassword(values.email, values.password)
           .then(data => {
-            console.log(data);
+            console.log("login successful!");
             // redirect to homepage
+            this.setState({
+              redirect: true
+            })
           })
           .catch(err => {
             // Handle Errors here.
@@ -35,6 +45,11 @@ class Login extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const myKey = "5";
+
+    if (this.state.redirect === true) {
+      return <Redirect to = "/" />;
+    }
+    
     return (
       <div className="App">
         <Layout>

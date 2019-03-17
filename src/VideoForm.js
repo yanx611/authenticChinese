@@ -18,6 +18,7 @@ class VideoForm extends Component {
       unit: {},
       topics: [],
       redirect: false,
+      login: true
     };
   }
   handleSubmit = e => {
@@ -59,6 +60,16 @@ class VideoForm extends Component {
   }
 
   componentDidMount() {
+    var user = firebase.auth().currentUser;
+    if (user) {
+      this.setState({
+        login: true
+      })
+    } else {
+      this.setState({
+        login: false
+      })
+    }
     const db = firebase.firestore();
     db.collection("levels")
       .get()
@@ -77,6 +88,9 @@ class VideoForm extends Component {
   }
 
   render() {
+    if (this.state.login === false) {
+      return <Redirect to = "/" />;
+    }
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelcol: {
@@ -93,7 +107,7 @@ class VideoForm extends Component {
     const level = this.state.level;
     const redirect = this.state.redirect;
     if (redirect === true) {
-      return <Redirect to = "/" />;
+      return <Redirect to="/" />;
     }
 
     return (
@@ -138,16 +152,32 @@ class VideoForm extends Component {
               <Form.Item>
                 {getFieldDecorator("description", {
                   rules: [
-                    { required: true, message: "Please enter the description of the series" }
+                    {
+                      required: true,
+                      message: "Please enter the description of the series"
+                    }
                   ]
-                })(<Input.TextArea placeholder="The description of the series" rows="2" />)}
+                })(
+                  <Input.TextArea
+                    placeholder="The description of the series"
+                    rows="2"
+                  />
+                )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("about", {
                   rules: [
-                    { required: true, message: "Please enter the information about the clip" }
+                    {
+                      required: true,
+                      message: "Please enter the information about the clip"
+                    }
                   ]
-                })(<Input.TextArea placeholder="The information about the clip" rows="2" />)}
+                })(
+                  <Input.TextArea
+                    placeholder="The information about the clip"
+                    rows="2"
+                  />
+                )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("embedUrl", {

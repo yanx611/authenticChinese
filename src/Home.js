@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import firebase, { auth, provider } from "./Firebase";
+import firebase from "./Firebase";
 import pic from "./pic.jpg";
 import { Menu, Row, Col, List, Card } from "antd";
 import "antd/dist/antd.css";
@@ -13,7 +13,7 @@ class Home extends Component {
     this.state = {
       unit: [["Default"]],
       level: ["Default"],
-      showingMenu: 0
+      showingMenu: 0,
     };
   }
   componentDidMount() {
