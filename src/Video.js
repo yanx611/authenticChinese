@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./App.css";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
-import { Layout, Row, Col, Tag } from "antd";
+import { Layout, Row, Col, Tag, Divider } from "antd";
 import firebase from "./Firebase";
 import "antd/dist/antd.css";
 
@@ -13,7 +14,8 @@ class Video extends Component {
     super(props);
     this.state = {
       info: [],
-      tags: []
+      tags: [],
+      levels: []
     };
   }
 
@@ -26,7 +28,8 @@ class Video extends Component {
       .then(snapshot => {
         this.setState({
           info: snapshot.data(),
-          tags: snapshot.data().tags
+          tags: snapshot.data().tags,
+          levels: snapshot.data().level
         });
       });
   }
@@ -35,6 +38,7 @@ class Video extends Component {
     // const myKey = "1";
     const info = this.state.info;
     const tags = this.state.tags;
+    const levels = this.state.levels;
 
     return (
       <div className="App">
@@ -42,42 +46,52 @@ class Video extends Component {
           <Header style={{ width: "100%" }}>
             <MenuEntry />
           </Header>
-          <Content style={{ margin: "40" }}>
+          <Content>
             <div>
-              <Row>
-                <Col span={12} offset={1}>
-                  <iframe
-                    title="targetVideo"
-                    width="720"
-                    height="486"
-                    src={info.embedUrl}
-                  />
-                </Col>
+              <Row style={{ margin: "40px" }}>
+                <iframe
+                  title="targetVideo"
+                  width="720"
+                  height="486"
+                  src={info.embedUrl}
+                />
               </Row>
               <Row>
                 <Col span={12} offset={1}>
-                  <div>
+                  <p>
                     <strong>{info.chineseName}</strong> ({info.englishName})
                     {info.episode} {info.releaseYear}
-                  </div>
-                  <div>
+                  </p>
+                  <Divider />
+                  <p>
                     <strong>Level: </strong>
-                    {info.level}
-                  </div>
-                  <div>
-                    <strong>Tag: </strong>{" "}
-                    {tags.map(tag => (
-                      <Tag>{tag}</Tag>
+                    {levels.map(level => (
+                      <Tag key={level}>{level}</Tag>
                     ))}
-                  </div>
-                  <div>
-                    <strong>Description:</strong>
+                  </p>
+                  <p>
+                    <strong>Tags: </strong>
+                    {tags.map(tag => (
+                      <Link to={"/view/" + tag}>
+                        <Tag key={tag} color="blue">
+                          {tag}
+                        </Tag>
+                      </Link>
+                    ))}
+                  </p>
+
+                  <Divider />
+                  <p>
+                    <strong>About the clip: </strong>
+                    {info.about}
+                  </p>
+                  <p>
+                    <strong>About the series: </strong>
                     {info.description}
-                  </div>
+                  </p>
                 </Col>
               </Row>
             </div>
-            {/* shows the embeded  video */}
           </Content>
           <Footer>
             <FooterInfo />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button, Layout, Select } from "antd";
-import firebase from './Firebase';
+import firebase from "./Firebase";
 import "./App.css";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
@@ -11,63 +11,69 @@ const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
 class VideoForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state =  {
-            level: [],
-            unit: {},
-            topics: [],
-            redirect: false
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      level: [],
+      unit: {},
+      topics: [],
+      redirect: false,
+    };
+  }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
         const db = firebase.firestore();
-        db.collection("clips").add(values)
-        .then(ref=>{
+        db.collection("clips")
+          .add(values)
+          .then(ref => {
             console.log("Added document with ID: ", ref.id);
-            db.collection("clips").doc(ref.id).set({
-                id: ref.id
-              }, {merge: true});
-        })
-        .then(
+            db.collection("clips")
+              .doc(ref.id)
+              .set(
+                {
+                  id: ref.id
+                },
+                { merge: true }
+              );
+          })
+          .then(
             this.setState({
-                redirect : true
+              redirect: true
             })
-        )
+          );
       }
     });
   };
 
   levelOnchange(val) {
-      let choices = [];
-      for (let i = 0; i < val.length; ++i) {
-          choices = choices.concat(this.state.unit[val[i]]);
-      }
-      this.setState({
-          topics: choices
-      })
+    let choices = [];
+    for (let i = 0; i < val.length; ++i) {
+      choices = choices.concat(this.state.unit[val[i]]);
+    }
+    this.setState({
+      topics: choices
+    });
   }
 
   componentDidMount() {
     const db = firebase.firestore();
     db.collection("levels")
-    .get()
-    .then(snapshot => {
+      .get()
+      .then(snapshot => {
         let levels = [];
         let units = {};
-        snapshot.forEach(doc=>{
-            levels.push(doc.data().levelNum);
-            units[doc.data().levelNum] = doc.data().topics;
-        })
-        this.setState({
-            level: levels,
-            unit: units
+        snapshot.forEach(doc => {
+          levels.push(doc.data().levelNum);
+          units[doc.data().levelNum] = doc.data().topics;
         });
-    })
+        this.setState({
+          level: levels,
+          unit: units
+        });
+      });
   }
 
   render() {
@@ -83,13 +89,11 @@ class VideoForm extends Component {
       }
     };
 
-    
-
     const myKey = "4";
     const level = this.state.level;
     const redirect = this.state.redirect;
     if (redirect === true) {
-        return <Redirect to="/" />
+      return <Redirect to = "/" />;
     }
 
     return (
@@ -134,9 +138,16 @@ class VideoForm extends Component {
               <Form.Item>
                 {getFieldDecorator("description", {
                   rules: [
-                    { required: true, message: "Please enter the description" }
+                    { required: true, message: "Please enter the description of the series" }
                   ]
-                })(<Input.TextArea placeholder="Video description" rows="2" />)}
+                })(<Input.TextArea placeholder="The description of the series" rows="2" />)}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator("about", {
+                  rules: [
+                    { required: true, message: "Please enter the information about the clip" }
+                  ]
+                })(<Input.TextArea placeholder="The information about the clip" rows="2" />)}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("embedUrl", {
@@ -149,7 +160,10 @@ class VideoForm extends Component {
                 })(
                   <Input
                     prefix={
-                      <Icon type="caret-right" style={{ color: "rgba(0,0,0,.25)" }} />
+                      <Icon
+                        type="caret-right"
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
                     }
                     type="text"
                     placeholder="Youtube url"
@@ -164,7 +178,10 @@ class VideoForm extends Component {
                 })(
                   <Input
                     prefix={
-                      <Icon type="ordered-list" style={{ color: "rgba(0,0,0,.25)" }} />
+                      <Icon
+                        type="ordered-list"
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
                     }
                     type="text"
                     placeholder="Episode of the video e.g. S1E01"
@@ -179,7 +196,10 @@ class VideoForm extends Component {
                 })(
                   <Input
                     prefix={
-                      <Icon type="project" style={{ color: "rgba(0,0,0,.25)" }} />
+                      <Icon
+                        type="project"
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
                     }
                     type="text"
                     placeholder="The genre of the video"
@@ -204,9 +224,11 @@ class VideoForm extends Component {
                     placeholder="Please select corresponding levels"
                     onChange={this.levelOnchange.bind(this)}
                   >
-                    {level.map(
-                        (item) => <Option key={item} value={item}>{item}</Option>
-                    )}
+                    {level.map(item => (
+                      <Option key={item} value={item}>
+                        {item}
+                      </Option>
+                    ))}
                   </Select>
                 )}
               </Form.Item>
@@ -227,9 +249,11 @@ class VideoForm extends Component {
                     mode="multiple"
                     placeholder="Please select corresponding tags"
                   >
-                    {this.state.topics.map(
-                        (item) => <Option key = {item.english} value={item.english}>{item.english}</Option>
-                    )}
+                    {this.state.topics.map(item => (
+                      <Option key={item.english} value={item.english}>
+                        {item.english}
+                      </Option>
+                    ))}
                   </Select>
                 )}
               </Form.Item>
@@ -241,7 +265,10 @@ class VideoForm extends Component {
                 })(
                   <Input
                     prefix={
-                      <Icon type="pushpin" style={{ color: "rgba(0,0,0,.25)" }} />
+                      <Icon
+                        type="pushpin"
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
                     }
                     type="text"
                     placeholder="Release Year of the video"
