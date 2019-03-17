@@ -28,6 +28,7 @@ class MenuEntry extends Component {
   handleLogout(e) {
     // change views for tabs of submenu
     firebase.auth().signOut();
+    window.location.reload(); 
   }
 
   render() {
