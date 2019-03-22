@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from './Firebase';
-import { Menu} from "antd";
+import { Menu, Icon } from 'antd';
 import "antd/dist/antd.css";
 // import SubMenu from "antd/lib/menu/SubMenu";
+
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 
 class MenuEntry extends Component {
   constructor(props) {

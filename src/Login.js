@@ -16,6 +16,19 @@ class Login extends Component {
       redirect: false,
     }
   }
+
+  componentDidMount() {
+    let user = firebase.auth().currentUser;
+    if (user) {
+      this.setState({
+        redirect: true
+      })
+    } else {
+      this.setState({
+        redirect: false
+      })
+    }
+  }
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {

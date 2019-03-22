@@ -18,6 +18,7 @@ class VideoList extends Component {
     const db = firebase.firestore();
     if (this.props.keyword === "all") {
       db.collection("clips")
+      .orderBy("chineseName", "asc")
         .get()
         .then(snapshot => {
           let clipCollection = [];

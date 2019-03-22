@@ -60,7 +60,7 @@ class VideoForm extends Component {
   }
 
   componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       this.setState({
         login: true

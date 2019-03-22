@@ -59,8 +59,8 @@ class Video extends Component {
               <Row>
                 <Col span={12} offset={1}>
                   <p>
-                    <strong>{info.chineseName}</strong> ({info.englishName})
-                    {info.episode} {info.releaseYear}
+                    <strong>{info.chineseName}</strong> ({info.englishName}), 
+                    {info.episode}, {info.releaseYear}, <i>{info.genre}</i>
                   </p>
                   <Divider />
                   <p>
