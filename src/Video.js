@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { DiscussionEmbed } from "disqus-react";
 import "./App.css";
+import "./Video.css";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
 import { Layout, Row, Col, Tag, Divider } from "antd";
@@ -40,6 +42,13 @@ class Video extends Component {
     const tags = this.state.tags;
     const levels = this.state.levels;
 
+    const disqusShortname = "vdlproject";
+    const pageTitle = info.chineseName+info.englishName+info.episode;
+    const disqusConfig = {
+      identifier: this.props.match.params.did,
+      title: pageTitle
+    };
+
     return (
       <div className="App">
         <Layout>
@@ -59,7 +68,7 @@ class Video extends Component {
               <Row>
                 <Col span={12} offset={1}>
                   <p>
-                    <strong>{info.chineseName}</strong> ({info.englishName}), 
+                    <strong>{info.chineseName}</strong> ({info.englishName}),
                     {info.episode}, {info.releaseYear}, <i>{info.genre}</i>
                   </p>
                   <Divider />
@@ -89,6 +98,17 @@ class Video extends Component {
                     <strong>About the series: </strong>
                     {info.description}
                   </p>
+                  <Divider />
+                </Col>
+              </Row>
+              <Row>
+                <Col span={12} offset={1}>
+                  <div>
+                    <DiscussionEmbed
+                      shortname={disqusShortname}
+                      config={disqusConfig}
+                    />
+                  </div>
                 </Col>
               </Row>
             </div>
