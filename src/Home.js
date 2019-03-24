@@ -13,11 +13,12 @@ class Home extends Component {
     this.state = {
       unit: [["Default"]],
       level: ["Default"],
-      showingMenu: 0,
+      showingMenu: 0
     };
   }
   componentDidMount() {
     // fetch data from firebase store in local state
+    document.title = "Chinese Video Clips Collection";
     const db = firebase.firestore();
     db.collection("levels")
       .get()
@@ -43,9 +44,6 @@ class Home extends Component {
     });
   }
 
-  handleTopicClick(e) {
-    // direct to view page of that specific topic
-  }
 
   render() {
     // render data of submenu and their topics
@@ -80,13 +78,7 @@ class Home extends Component {
             renderItem={item => (
               <List.Item>
                 <Link to={"/view/" + item.english}>
-                  <Card
-                    title={item.english}
-                    onClick={this.handleTopicClick.bind(this)}
-                  >
-                    {" "}
-                    {item.chinese}
-                  </Card>
+                  <Card title={item.english}> {item.chinese}</Card>
                 </Link>
               </List.Item>
             )}

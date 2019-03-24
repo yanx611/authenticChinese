@@ -33,6 +33,7 @@ class Video extends Component {
           tags: snapshot.data().tags,
           levels: snapshot.data().level
         });
+        document.title = snapshot.data().englishName;
       });
   }
 
@@ -43,7 +44,7 @@ class Video extends Component {
     const levels = this.state.levels;
 
     const disqusShortname = "vdlproject";
-    const pageTitle = info.chineseName+info.englishName+info.episode;
+    const pageTitle = info.chineseName + info.englishName + info.episode;
     const disqusConfig = {
       identifier: this.props.match.params.did,
       title: pageTitle
@@ -57,16 +58,18 @@ class Video extends Component {
           </Header>
           <Content>
             <div>
-              <Row style={{ margin: "40px" }}>
-                <iframe
-                  title="targetVideo"
-                  width="720"
-                  height="486"
-                  src={info.embedUrl}
-                />
+              <Row>
+                <Col offset={1}>
+                  <iframe
+                    title="targetVideo"
+                    width="720"
+                    height="486"
+                    src={info.embedUrl}
+                  />
+                </Col>
               </Row>
               <Row>
-                <Col span={12} offset={1}>
+                <Col span={14} offset={1}>
                   <p>
                     <strong>{info.chineseName}</strong> ({info.englishName}),
                     {info.episode}, {info.releaseYear}, <i>{info.genre}</i>
@@ -102,7 +105,7 @@ class Video extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col span={12} offset={1}>
+                <Col span={18} offset={1}>
                   <div>
                     <DiscussionEmbed
                       shortname={disqusShortname}

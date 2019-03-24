@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Divider } from "antd";
+import { Row, Col, Icon } from "antd";
 import "antd/dist/antd.css";
 
 // component store footer information
@@ -7,62 +7,49 @@ import "antd/dist/antd.css";
 class FooterInfo extends Component {
   render() {
     return (
-      <div style={{ background: "" }}>
-        <Row gutter={16}>
-          <Col className="gutter-row" span={6}>
+      <div>
+        <Row>
+          <Col offset={1} span={11}>
             <div className="gutter-box">
-              <h3>About</h3>
-              <small>
-                The website provides multiple types of videos that related to
-                Chinese learning topics in Rensselaer Polytechnic Institute. The
-                website encourage the student to learn from the video and
-                explore the original series.{" "}
-              </small>
+              <h3>Project X</h3>
+              Project X provides a collection of related educational video clips
+              related to topics in Chinese textbooks used in Rensselaer
+              Polytechnic Institute.
             </div>
-            <Divider type="vertical" />
           </Col>
-          <Col className="gutter-row" span={6}>
+          <Col offset={1} span={5}>
             <div className="gutter-box">
               <h3>Contact</h3>
               <p>
-                <small>
-                  <a
-                    href="https://github.com/yanx611/videoLearning"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    Github
-                  </a>
-                </small>
+                <Icon type="github" />
+                <a
+                  href="https://github.com/yanx611/videoLearning"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {" "}
+                  Github
+                </a>
               </p>
               <p>
-                <small>
-                  <a href="mailto:xxx@rpi.edu" target="_top">
-                    Contact the development team
-                  </a>
-                </small>
+                <Icon type="mail" />
+                <a href="mailto:xxx@rpi.edu" target="_top">
+                  {" "}
+                  Developer
+                </a>
               </p>
               <p>
-                <small>
-                  <a href="mailto:xxx@rpi.edu" target="_top">
-                    Contact Professor{" "}
-                  </a>
-                </small>
+                <Icon type="user" />
+
+                <a href="mailto:zhouy12@rpi.edu" target="_top">
+                  {" "}
+                  Professor
+                </a>
               </p>
             </div>
-            <Divider type="vertical" />
           </Col>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
-              <h3>Other Resource</h3>
-              <small />
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
-              <h3>Learn More</h3>
-              <small />
-            </div>
+          <Col  offset={1} span={5}>
+            <h3>Learn More</h3>
           </Col>
         </Row>
       </div>

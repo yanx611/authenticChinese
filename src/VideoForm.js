@@ -60,6 +60,7 @@ class VideoForm extends Component {
   }
 
   componentDidMount() {
+    document.title = "Create - Chinese Video Clips Collection"
     let user = firebase.auth().currentUser;
     if (user) {
       this.setState({

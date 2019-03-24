@@ -9,6 +9,9 @@ import "antd/dist/antd.css";
 const { Header, Content, Footer } = Layout;
 
 class All extends Component {
+  componentDidMount() {
+    document.title = "View - Chinese Video Clips Collection"
+  }
   render() {
     const myKey = "3";
     return (
