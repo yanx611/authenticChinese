@@ -8,12 +8,12 @@ import "antd/dist/antd.css";
 
 const { Header, Content, Footer } = Layout;
 
-class All extends Component {
+class Type extends Component {
   componentDidMount() {
-    document.title = "View - Chinese Video Clips Collection"
+    document.title = "Category - Chinese Video Clips Collection"
   }
   render() {
-    const myKey = "3";
+    const myKey = "sub1";
     return (
       <div className="App">
         <Layout>
@@ -21,7 +21,7 @@ class All extends Component {
             <MenuEntry mkey={myKey} />
           </Header>
           <Content>
-            <VideoList keyword={this.props.match.params.keyword} type="" />
+            <VideoList type={this.props.match.params.type} keyword=""/>
           </Content>
           <Footer style={{ width: "100%" }}>
             <FooterInfo />
@@ -32,4 +32,4 @@ class All extends Component {
   }
 }
 
-export default All;
+export default Type;

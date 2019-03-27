@@ -31,7 +31,7 @@ class VideoList extends Component {
             clips: clipCollection
           });
         });
-    } else {
+    } else if (this.props.keyword !== "") {
       // matching tags
       db.collection("clips")
         .where("tags", "array-contains", this.props.keyword)
@@ -47,14 +47,54 @@ class VideoList extends Component {
             clips: clipCollection
           });
         });
+    } else if (this.props.keyword === "" && this.props.type !== "") {
+      db.collection("clips")
+      .where("type", "==", this.props.type)
+      .get()
+      .then(snapshot=> {
+        let clipCollection = [];
+        snapshot.forEach(doc => {
+          if (doc.data().englishName && doc.data().englishName !== "") {
+            clipCollection.push(doc.data());
+          }
+        });
+        this.setState({
+          clips: clipCollection
+        });
+      })
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.type !== prevProps.type) {
+      const db = firebase.firestore();
+      db.collection("clips")
+      .where("type", "==", this.props.type)
+      .get()
+      .then(snapshot=> {
+        let clipCollection = [];
+        snapshot.forEach(doc => {
+          if (doc.data().englishName && doc.data().englishName !== "") {
+            clipCollection.push(doc.data());
+          }
+        });
+        this.setState({
+          clips: clipCollection
+        });
+      })
+    }
+  }
+
+
   render() {
     const clips = this.state.clips;
+    let word = "";
+    if (this.props.keyword === "") word = this.props.type;
+    else word = this.props.keyword;
     // console.log(clips);
     return (
       <div>
-        <div style={textStyle}>Results for {this.props.keyword}: </div>
+        <div style={textStyle}>Results for {word}: </div>
         <div style={textStyle}>
           {/* <VideoCard  /> */}
           <Row>

@@ -17,6 +17,7 @@ class VideoForm extends Component {
       level: [],
       unit: {},
       topics: [],
+      type: [],
       redirect: false,
       login: true
     };
@@ -60,16 +61,16 @@ class VideoForm extends Component {
   }
 
   componentDidMount() {
-    document.title = "Create - Chinese Video Clips Collection"
+    document.title = "Create - Chinese Video Clips Collection";
     let user = firebase.auth().currentUser;
     if (user) {
       this.setState({
         login: true
-      })
+      });
     } else {
       this.setState({
         login: false
-      })
+      });
     }
     const db = firebase.firestore();
     db.collection("levels")
@@ -86,11 +87,22 @@ class VideoForm extends Component {
           unit: units
         });
       });
+    db.collection("category")
+      .get()
+      .then(snapshot => {
+        let ty = [];
+        snapshot.forEach(doc => {
+          ty = ty.concat(doc.data().list);
+        });
+        this.setState({
+          type: ty
+        });
+      });
   }
 
   render() {
     if (this.state.login === false) {
-      return <Redirect to = "/" />;
+      return <Redirect to="/" />;
     }
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
@@ -309,16 +321,22 @@ class VideoForm extends Component {
               <Form.Item>
                 {getFieldDecorator("type", {
                   rules: [
-                    { required: true, message: "Please input the episode" }
+                    {
+                      required: true,
+                      message: "Please select corresponding type"
+                    }
                   ]
                 })(
-                  <Input
-                    prefix={
-                      <Icon type="tag" style={{ color: "rgba(0,0,0,.25)" }} />
-                    }
-                    type="text"
-                    placeholder="Type of the video"
-                  />
+                  <Select
+                    defaultValue="tvshow"
+                    placeholder="Please select the type of the video"
+                  >
+                    {this.state.type.map(item => (
+                      <Option key={item.value} value={item.value}>
+                        {item.name}
+                      </Option>
+                    ))}
+                  </Select>
                 )}
               </Form.Item>
               <Form.Item>

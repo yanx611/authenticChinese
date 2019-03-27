@@ -6,6 +6,7 @@ import App from "./App";
 import All from "./All";
 import Video from "./Video";
 import Login from "./Login";
+import Type from "./Type";
 import Notfound from "./Notfound";
 import * as serviceWorker from "./serviceWorker";
 import VideoForm from "./VideoForm";
@@ -20,6 +21,7 @@ const routing = (
       <Route path="/vd/:did" component={Video} />
       <Route path="/createNew" component={VideoForm} />
       <Route path="/login" component={Login} />
+      <Route path="/c/:type" component={Type} />
       <Route component={Notfound} />
     </Switch>
   </Router>
