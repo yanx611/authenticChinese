@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "./Firebase";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
 import "antd/dist/antd.css";
 // import SubMenu from "antd/lib/menu/SubMenu";
 

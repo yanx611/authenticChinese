@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { DiscussionEmbed } from "disqus-react";
 import "./App.css";
-import "./Video.css";
 import FooterInfo from "./FooterInfo";
 import MenuEntry from "./MenuEntry";
 import { Layout, Row, Col, Tag, Divider } from "antd";

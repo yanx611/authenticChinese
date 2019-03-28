@@ -21,7 +21,7 @@ class Type extends Component {
             <MenuEntry mkey={myKey} />
           </Header>
           <Content>
-            <VideoList type={this.props.match.params.type} keyword=""/>
+            <VideoList type={this.props.match.params.type} keyword={""} />
           </Content>
           <Footer style={{ width: "100%" }}>
             <FooterInfo />

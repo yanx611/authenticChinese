@@ -21,7 +21,7 @@ class All extends Component {
             <MenuEntry mkey={myKey} />
           </Header>
           <Content>
-            <VideoList keyword={this.props.match.params.keyword} type="" />
+            <VideoList keyword={this.props.match.params.keyword} type={""} />
           </Content>
           <Footer style={{ width: "100%" }}>
             <FooterInfo />
