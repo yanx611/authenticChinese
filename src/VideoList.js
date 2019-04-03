@@ -107,7 +107,6 @@ class VideoList extends Component {
                     <Card
                       title={item.englishName}
                       hoverable
-                      style={{ width: 300 }}
                     >
                       <p>{"(" + item.type + ") " + item.episode}</p>
                     </Card>

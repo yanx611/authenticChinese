@@ -65,6 +65,9 @@ class MenuEntry extends Component {
               <Link to="/c/gameshow">Game Show</Link>
             </Menu.Item>
             <Menu.Item key="9">
+              <Link to="/c/movie">Movie</Link>
+            </Menu.Item>
+            <Menu.Item key="10">
               <Link to="/c/tvshow">TV Show</Link>
             </Menu.Item>
           </SubMenu>
@@ -102,6 +105,9 @@ class MenuEntry extends Component {
               <Link to="/c/gameshow">Game Show</Link>
             </Menu.Item>
             <Menu.Item key="9">
+              <Link to="/c/movie">Movie</Link>
+            </Menu.Item>
+            <Menu.Item key="10">
               <Link to="/c/tvshow">TV Show</Link>
             </Menu.Item>
           </SubMenu>
