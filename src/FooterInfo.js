@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Icon } from "antd";
+import { Row, Col, Divider, Icon } from "antd";
 import "antd/dist/antd.css";
 
 // component store footer information
@@ -12,12 +12,10 @@ class FooterInfo extends Component {
           <Col offset={1} span={11}>
             <div className="gutter-box">
               <h3>Project X</h3>
-              Project X provides a collection of related educational video clips
-              related to topics in Chinese textbooks used in Rensselaer
-              Polytechnic Institute.
+              Project X provides videos clips about how Chinese languages used in day-to-day communication. The topics available on this website are selected from the textbooks used in Rensselaer Polytechnic Institute. 
             </div>
           </Col>
-          <Col offset={1} span={5}>
+          <Col offset={1} span={11}>
             <div className="gutter-box">
               <h3>Contact</h3>
               <p>
@@ -30,26 +28,29 @@ class FooterInfo extends Component {
                   {" "}
                   Github
                 </a>
-              </p>
-              <p>
+                <Divider type="vertical" />
                 <Icon type="mail" />
-                <a href="mailto:xxx@rpi.edu" target="_top">
+                <a href="mailto:yanx3@rpi.edu" target="_top">
                   {" "}
-                  Developer
+                  Team
                 </a>
-              </p>
-              <p>
+                <Divider type="vertical" />
                 <Icon type="user" />
-
                 <a href="mailto:zhouy12@rpi.edu" target="_top">
                   {" "}
                   Professor
                 </a>
               </p>
+              <p>
+                <a
+                  href="https://www.rpi.edu/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Rensselaer Polytechnic Institute
+                </a>
+              </p>
             </div>
-          </Col>
-          <Col  offset={1} span={5}>
-            <h3>Learn More</h3>
           </Col>
         </Row>
       </div>
