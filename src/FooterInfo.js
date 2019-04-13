@@ -11,8 +11,8 @@ class FooterInfo extends Component {
         <Row>
           <Col offset={1} span={11}>
             <div className="gutter-box">
-              <h3>Project X</h3>
-              Project X provides videos clips about how Chinese languages used in day-to-day communication. The topics available on this website are selected from the textbooks used in Rensselaer Polytechnic Institute. 
+              <h3>Project Authentic Chinese</h3>
+              Project Authentic Chinese provides videos clips about how Chinese languages used in day-to-day communication. The topics available on this website are selected from the textbooks used in Rensselaer Polytechnic Institute. 
             </div>
           </Col>
           <Col offset={1} span={11}>
@@ -30,7 +30,7 @@ class FooterInfo extends Component {
                 </a>
                 <Divider type="vertical" />
                 <Icon type="mail" />
-                <a href="mailto:yanx3@rpi.edu" target="_top">
+                <a href="mailto:yanx611@gmail.com" target="_top">
                   {" "}
                   Team
                 </a>

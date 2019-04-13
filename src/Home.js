@@ -18,7 +18,7 @@ class Home extends Component {
   }
   componentDidMount() {
     // fetch data from firebase store in local state
-    document.title = "Chinese Video Clips Collection";
+    document.title = "Project Authentic Chinese";
     const db = firebase.firestore();
     db.collection("levels")
       .get()

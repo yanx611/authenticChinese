@@ -106,6 +106,7 @@ class VideoList extends Component {
                   <Link to={"/vd/" + item.id}>
                     <Card
                       title={item.englishName}
+                      cover={<img alt="example" src={item.imageUrl} />}
                       hoverable
                     >
                       <p>{"(" + item.type + ") " + item.episode}</p>

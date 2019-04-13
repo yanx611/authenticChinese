@@ -16,7 +16,7 @@ class Notfound extends Component {
             <MenuEntry />
           </Header>
           <Content style={{ textAlign: "center", padding: "20px" }}>
-            <h1>Sorry, the page is running away</h1>
+            <h1>Sorry, the page does not exist</h1>
             <p>
               Go back to the <Link to="/">main page</Link>{" "}
             </p>

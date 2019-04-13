@@ -10,7 +10,7 @@ const { Header, Content, Footer } = Layout;
 
 class All extends Component {
   componentDidMount() {
-    document.title = "View - Chinese Video Clips Collection"
+    document.title = "View - Project Authentic Chinese"
   }
   
   render() {

@@ -18,7 +18,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    document.title = "Login - Chinese Video Clips Collection";
+    document.title = "Login - Project Authentic Chinese";
     let user = firebase.auth().currentUser;
     if (user) {
       this.setState({

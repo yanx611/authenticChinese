@@ -43,7 +43,7 @@ class MenuEntry extends Component {
           style={{ lineHeight: "64px" }}
         >
           <Menu.Item key="1" disabled>
-            Project X
+            Project Authentic Chinese
           </Menu.Item>
           <Menu.Item key="2">
             <Link to="/">Main</Link>
@@ -62,7 +62,7 @@ class MenuEntry extends Component {
               <Link to="/c/animation">Animation</Link>
             </Menu.Item>
             <Menu.Item key="8">
-              <Link to="/c/gameshow">Game Show</Link>
+              <Link to="/c/varietyshow">Variety Show</Link>
             </Menu.Item>
             <Menu.Item key="9">
               <Link to="/c/movie">Movie</Link>
@@ -82,7 +82,7 @@ class MenuEntry extends Component {
           style={{ lineHeight: "64px" }}
         >
           <Menu.Item key="1" disabled>
-            Project X
+            Project Authentic Chinese
           </Menu.Item>
           <Menu.Item key="2">
             <Link to="/">Main</Link>
@@ -102,7 +102,7 @@ class MenuEntry extends Component {
               <Link to="/c/animation">Animation</Link>
             </Menu.Item>
             <Menu.Item key="8">
-              <Link to="/c/gameshow">Game Show</Link>
+              <Link to="/c/varietyshow">Variety Show</Link>
             </Menu.Item>
             <Menu.Item key="9">
               <Link to="/c/movie">Movie</Link>

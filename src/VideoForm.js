@@ -61,7 +61,7 @@ class VideoForm extends Component {
   }
 
   componentDidMount() {
-    document.title = "Create - Chinese Video Clips Collection";
+    document.title = "Create - Project Authentic Chinese";
     let user = firebase.auth().currentUser;
     if (user) {
       this.setState({
@@ -210,6 +210,27 @@ class VideoForm extends Component {
                     }
                     type="text"
                     placeholder="Youtube url"
+                  />
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator("imageUrl", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please input the url of the thumbnail"
+                    }
+                  ]
+                })(
+                  <Input
+                    prefix={
+                      <Icon
+                        type="pic-right"
+                        style={{ color: "rgba(0,0,0,.25)" }}
+                      />
+                    }
+                    type="text"
+                    placeholder="Thumbnail url"
                   />
                 )}
               </Form.Item>
