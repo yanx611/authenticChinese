@@ -1,3 +1,13 @@
+### Introduction
+Authentic Chinese Project is created as the master project in spring semester 2019.  It is a web application provides the chance for students to learn Chinese cultures and languages through the authentic movie, and TV series and program clips.  Students can view and discuss clips on the application and professors can answer the question accordingly. The project gives space to showcase the modern Chinese languages and cultures in order to provide languages learners up-to-date learning materials.  
+
+## URL
+https://vl0514.firebaseapp.com
+
+## Document 
+https://docs.google.com/document/d/15Q3KXrklHF_mxA5RGJ8e79cENY4QbsDnN1U1zZIJ6QE/edit?usp=sharing
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
