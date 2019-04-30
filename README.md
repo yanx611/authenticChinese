@@ -1,4 +1,4 @@
-### Introduction
+# Introduction
 Authentic Chinese Project is created as the master project in spring semester 2019.  It is a web application provides the chance for students to learn Chinese cultures and languages through the authentic movie, and TV series and program clips.  Students can view and discuss clips on the application and professors can answer the question accordingly. The project gives space to showcase the modern Chinese languages and cultures in order to provide languages learners up-to-date learning materials.  
 
 ## URL
